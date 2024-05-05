@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail{% endblock %}
+
+{% block navbar %}
+    <a class="navbar-brand" href="{% url 'home' %}">Products</a>
+    <span style="color: white; margin-top: 5px; margin-right: 16px">|</span>
+    <a class="navbar-brand" href="">Add Products</a>
+    <span style="color: white; margin-top: 5px; margin-right: 16px">|</span>
+    <a class="navbar-brand" href="">Add Category</a>
+{% endblock %}
+
+{% block content %}
+    <div class="card mb-3" style="max-width: 600px; margin-top: 100px; border: solid 2px">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col-md-4">
+                <img src="{{ products.imagine }}" class="img-fluid rounded-start" alt="">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ products.title }}</h5>
+                    <p class="card-text">{{ products.category }}</p>
+                    <h6 class="card-text">{{ products.cost }}$</h6>
+                    <p class="card-text">{{ products.description }}</p>
+                    <p class="card-text">{{ products.add_date }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

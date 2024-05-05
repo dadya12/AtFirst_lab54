@@ -3,7 +3,11 @@
 {% block title %}A Webb Page{% endblock %}
 
 {% block navbar %}
-
+    <a class="navbar-brand" href="{% url 'home' %}">Products</a>
+    <span style="color: white; margin-top: 5px; margin-right: 16px">|</span>
+    <a class="navbar-brand" href="">Add Products</a>
+    <span style="color: white; margin-top: 5px; margin-right: 16px">|</span>
+    <a class="navbar-brand" href="">Add Category</a>
 {% endblock %}
 
 {% block content %}
@@ -18,7 +22,7 @@
                         <h5 class="card-title">{{ product.title }}</h5>
                         <p class="card-text">{{ product.category }}</p>
                         <h6 class="card-text">{{ product.cost }}$</h6>
-                        <a href="">See more...</a>
+                        <a href="{% url 'detail' product.pk %}">See more...</a>
                     </div>
                 </div>
             </div>
