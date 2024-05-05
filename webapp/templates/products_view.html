@@ -5,7 +5,7 @@
 {% block navbar %}
     <a class="navbar-brand" href="{% url 'home' %}">Products</a>
     <span style="color: white; margin-top: 5px; margin-right: 16px">|</span>
-    <a class="navbar-brand" href="">Add Products</a>
+    <a class="navbar-brand" href="{% url 'add_product' %}">Add Products</a>
     <span style="color: white; margin-top: 5px; margin-right: 16px">|</span>
     <a class="navbar-brand" href="{% url 'add_category' %}">Add Category</a>
 {% endblock %}

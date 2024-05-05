@@ -21,3 +21,18 @@ def add_category(request):
             description=request.POST.get('description'),
         )
         return redirect('home')
+
+
+def add_product(request):
+    if request.method == 'GET':
+        category = Category.objects.all()
+        return render(request, 'product_add_view.html', {'category': category})
+    elif request.method == "POST":
+        Product.objects.create(
+            title=request.POST.get('title'),
+            description=request.POST.get('description'),
+            cost=request.POST.get('cost'),
+            category_id=request.POST.get('category_id'),
+            imagine=request.POST.get('imagine'),
+        )
+        return redirect('home')

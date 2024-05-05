@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Category{% endblock %}
+
+{% block navbar %}
+    <a class="navbar-brand" href="{% url 'home' %}">Products</a>
+    <span style="color: white; margin-top: 5px; margin-right: 16px">|</span>
+    <a class="navbar-brand" href="{% url 'add_category' %}">Add Category</a>
+{% endblock %}
+
+{% block content_2 %}
+    <h1 style="margin-top: 50px; margin-bottom: 50px">Add Product</h1>
+    <form method="post" action="{% url 'add_product' %}">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Title" required>
+        <br>
+        <br>
+        <input type="number" name="cost" placeholder="Price" required>
+        <br>
+        <br>
+        <input type="url" name="imagine" placeholder="Image url" required>
+        <br>
+        <br>
+        <select name="category_id" id="" required>
+            {% for cat in category %}
+                <option value="{{ cat.id }}">{{ cat.title }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <textarea name="description" placeholder="Description"></textarea>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary">Add Category</button>
+    </form>
+{% endblock %}
