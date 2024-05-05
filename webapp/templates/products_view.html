@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}A Webb Page{% endblock %}
+
+{% block navbar %}
+
+{% endblock %}
+
+{% block content %}
+    {% for product in products %}
+        <div class="card mb-3" style="max-width: 500px; margin-top: 100px; border: solid 2px">
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col-md-4">
+                    <img src="{{ product.imagine }}" class="img-fluid rounded-start" alt="">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.title }}</h5>
+                        <p class="card-text">{{ product.category }}</p>
+                        <h6 class="card-text">{{ product.cost }}$</h6>
+                        <a href="">See more...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
