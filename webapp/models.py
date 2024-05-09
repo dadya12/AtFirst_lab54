@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator
 from django.db import models
 
 
@@ -16,4 +17,5 @@ class Product(models.Model):
     category = models.ForeignKey('webapp.Category', on_delete=models.CASCADE, verbose_name='Категория',
                                  related_name='cat', null=True)
     cost = models.DecimalField(verbose_name='Стоимость', max_digits=7, decimal_places=2)
+    remaining_quantity = models.IntegerField(verbose_name='Остаток', default=0, validators=[MinValueValidator(0)], help_text='Не может быть ниже 0')
     imagine = models.CharField(verbose_name='Изображение', max_length=500)

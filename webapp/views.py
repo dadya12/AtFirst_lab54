@@ -49,3 +49,15 @@ def add_product(request):
             return redirect('home')
         else:
             return render(request, 'product_add_view.html', {'form': form})
+
+
+def update_product(request, *args, pk, **kwargs):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'GET':
+        ProductForm(initial={
+            'title': product.title,
+            'description': product.description,
+            'category': product.category,
+            'cost': product.cost,
+            'imagine': product.imagine
+        })

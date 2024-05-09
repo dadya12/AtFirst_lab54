@@ -3,7 +3,6 @@ from django import forms
 
 
 class ProductForm(forms.ModelForm):
-    remaining_quantity = forms.IntegerField(min_value=0)
 
     class Meta:
         model = Product
