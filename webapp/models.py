@@ -15,5 +15,5 @@ class Product(models.Model):
     add_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
     category = models.ForeignKey('webapp.Category', on_delete=models.CASCADE, verbose_name='Категория',
                                  related_name='cat', null=True)
-    cost = models.DecimalField(verbose_name='Стоимость', max_digits=10, decimal_places=2)
+    cost = models.DecimalField(verbose_name='Стоимость', max_digits=7, decimal_places=2)
     imagine = models.CharField(verbose_name='Изображение', max_length=500)
