@@ -77,3 +77,12 @@ def update_product(request, *args, pk, **kwargs):
         else:
             product.save()
             return render(request, 'products_update_view.html', {'form': form})
+
+
+def delete_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'GET':
+        return render(request, 'delete_product.html', {'product': product})
+    elif request.method == 'POST':
+        product.delete()
+        return redirect('home')

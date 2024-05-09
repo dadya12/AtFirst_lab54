@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Category{% endblock %}
+
+{% block navbar %}
+    <a class="navbar-brand" href="{% url 'home' %}">Products</a>
+    <span style="color: white; margin-top: 5px; margin-right: 16px">|</span>
+    <a class="navbar-brand" href="{% url 'add_category' %}">Add Category</a>
+{% endblock %}
+
+{% block content_2 %}
+    <h1 style="margin-top: 50px; margin-bottom: 50px">Delete Product</h1>
+    <div style="text-align: center">
+        <form method="post" action="">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Да</button>
+            <a href="{% url 'home' %}" class="btn btn-success" role="button">Нет</a>
+        </form>
+    </div>
+{% endblock %}

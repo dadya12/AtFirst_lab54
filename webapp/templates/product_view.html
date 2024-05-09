@@ -8,6 +8,9 @@
     <a class="navbar-brand" href="{% url 'add_product' %}">Add Products</a>
     <span style="color: white; margin-top: 5px; margin-right: 16px">|</span>
     <a class="navbar-brand" href="{% url 'add_category' %}">Add Category</a>
+    <span style="color: white; margin-top: 5px; margin-right: 16px">|</span>
+    <a class="navbar-brand" href="{% url 'delete_product' products.pk %}">Delete Product</a>
+    <span style="color: white; margin-top: 5px; margin-right: 16px">|</span>
 {% endblock %}
 
 {% block content %}
