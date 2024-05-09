@@ -23,6 +23,7 @@
                     <h6 class="card-text">{{ products.cost }}$</h6>
                     <p class="card-text">{{ products.description }}</p>
                     <p class="card-text">{{ products.add_date }}</p>
+                    <a class="navbar-brand" href="{% url 'update_product' products.pk %}" style="color: blue">Update Products</a>
                 </div>
             </div>
         </div>

@@ -54,10 +54,26 @@ def add_product(request):
 def update_product(request, *args, pk, **kwargs):
     product = get_object_or_404(Product, pk=pk)
     if request.method == 'GET':
-        ProductForm(initial={
+        form = ProductForm(initial={
             'title': product.title,
             'description': product.description,
             'category': product.category,
             'cost': product.cost,
+            'remaining_quantity': product.remaining_quantity,
             'imagine': product.imagine
         })
+        return render(request, 'products_update_view.html', {'form': form})
+    elif request.method == "POST":
+        form = ProductForm(data=request.POST)
+        if form.is_valid():
+            product.title = form.cleaned_data.get('title')
+            product.description = form.cleaned_data.get('description')
+            product.category = form.cleaned_data.get('category')
+            product.cost = form.cleaned_data.get('cost')
+            product.remaining_quantity = form.cleaned_data.get('remaining_quantity')
+            product.imagine = form.cleaned_data.get('imagine')
+            product.save()
+            return redirect('home')
+        else:
+            product.save()
+            return render(request, 'products_update_view.html', {'form': form})
