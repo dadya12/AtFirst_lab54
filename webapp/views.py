@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from webapp.models import Category, Product
 from webapp.forms import ProductForm, CategoryForm
+from django.db.models.functions import Lower
 
 
 def home(request):
-    products = Product.objects.all()
+    products = Product.objects.all().filter(remaining_quantity__gte=1).order_by('category__title', Lower('title'))
     return render(request, 'products_view.html', {'products': products})
 
 
@@ -44,6 +45,7 @@ def add_product(request):
                 description=form.cleaned_data.get('description'),
                 cost=form.cleaned_data.get('cost'),
                 category=category,
+                remaining_quantity=form.cleaned_data.get('remaining_quantity'),
                 imagine=form.cleaned_data.get('imagine'),
             )
             return redirect('home')

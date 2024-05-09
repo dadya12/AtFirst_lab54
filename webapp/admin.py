@@ -15,5 +15,5 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'description', 'add_date', 'category', 'cost']
     list_filter = ['id', 'title']
     search_fields = ['title', 'id']
-    fields = ['title', 'description', 'add_date', 'category', 'cost', 'imagine']
+    fields = ['title', 'description', 'add_date', 'category', 'cost', 'remaining_quantity', 'imagine']
     readonly_fields = ['add_date']
